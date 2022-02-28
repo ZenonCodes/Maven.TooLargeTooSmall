@@ -12,7 +12,7 @@ public class Main {
         Random random = new Random();
         int rightGuess =random.nextInt(100);
         Scanner scanner = new Scanner(System.in);
-        int guess;
+        int guess = 0, lastGuess = -1, guessCount = 0;
         do {
             System.out.println("Guess a number between 1 - 100!");
              guess = scanner.nextInt();
@@ -21,9 +21,14 @@ public class Main {
             } else if (guess < rightGuess){
                 System.out.println("Too small!");
             }
+            if(lastGuess != guess){
+                guessCount++;
+            }
+            lastGuess = guess;
+
         } while (guess != rightGuess);
 
-        System.out.println("Congratulations! You got it!!");
+        System.out.println("Congratulations! You got it in " + guessCount + " tries!");
 
 
     }
